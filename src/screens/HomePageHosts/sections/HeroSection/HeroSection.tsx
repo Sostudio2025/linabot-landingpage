@@ -74,7 +74,7 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
       )}
 
       {isMenuOpen && (
-        <div className="md:hidden fixed top-0 left-0 w-full h-screen bg-black/90 z-50 flex flex-col items-end pt-20 pr-8 overflow-hidden">
+        <div className="md:hidden fixed top-0 left-0 w-full h-screen bg-black/90 z-50 flex flex-col items-end pt-20 pr-8 overflow-hidden animate-slide-down">
           <div className="absolute top-4 left-4 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
           <button
             className="absolute top-4 right-4 text-white text-4xl font-light w-10 h-10 flex items-center justify-center"
@@ -131,7 +131,8 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
               <a
                 key={index}
                 href={getLinkHref(link)}
-                className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[28px] tracking-[0] [direction:rtl] mb-6"
+                className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[28px] tracking-[0] [direction:rtl] mb-6 transition-smooth hover:text-[#17c3b2] hover:translate-x-2"
+                style={{ animationDelay: `${index * 0.05}s` }}
                 onClick={(e) => handleClick(e, link)}
               >
                 {link}
@@ -189,7 +190,7 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
               {index > 0 && "\u00A0\u00A0\u00A0\u00A0"}
               <a
                 href={getLinkHref(link)}
-                className="hover:underline cursor-pointer"
+                className="hover:underline cursor-pointer transition-smooth hover:text-[#17c3b2]"
                 onClick={(e) => handleClick(e, link)}
               >
                 {link}
@@ -199,7 +200,7 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
         })}
       </nav>
 
-      <h1 className="absolute top-[80px] md:top-[158px] left-1/2 -translate-x-1/2 w-full md:w-[90%] max-w-[630px] px-4 [font-family:'Secular_One',Helvetica] font-normal text-white text-[46px] md:text-[66px] leading-[1.07] text-center tracking-[0] [direction:rtl]">
+      <h1 className="absolute top-[80px] md:top-[158px] left-1/2 -translate-x-1/2 w-full md:w-[90%] max-w-[630px] px-4 [font-family:'Secular_One',Helvetica] font-normal text-white text-[46px] md:text-[66px] leading-[1.07] text-center tracking-[0] [direction:rtl] animate-slide-in-bottom">
         {heroTitle || "לינה היא בוט חכם בוואטסאפ שמחבר בין מתארחים למארחים"}
       </h1>
     </section>

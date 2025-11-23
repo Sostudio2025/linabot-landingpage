@@ -12,6 +12,7 @@ import { FaqSection } from "./sections/FaqSection";
 import { FooterSection } from "./sections/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { StickyTabs } from "../../components/StickyTabs";
+import { AnimatedSection } from "../../components/AnimatedSection";
 
 
 export const HomePageHosts = (): JSX.Element => {
@@ -39,6 +40,7 @@ export const HomePageHosts = (): JSX.Element => {
 
       <StickyTabs activeCard={activeType} onCardChange={handleCardChange} />
 
+      <AnimatedSection animation="slide-bottom" threshold={0.2}>
       <section id="about" className="relative w-full flex flex-col items-center py-8 md:py-16 pt-16 md:pt-32 px-4 transition-opacity duration-500 animate-in fade-in" key={activeType}>
         <div className="w-full max-w-[884px] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[28px] md:text-[40px] text-center tracking-[0] leading-[1.16] [direction:rtl]">
           {content.intro.title}
@@ -76,12 +78,14 @@ export const HomePageHosts = (): JSX.Element => {
         </div>
 
         <img
-          className="w-full max-w-[397px] h-auto mt-8 md:mt-16"
+          className="w-full max-w-[397px] h-auto mt-8 md:mt-16 hover-lift"
           alt="Frame"
           src={content.intro.image}
         />
       </section>
+      </AnimatedSection>
 
+      <AnimatedSection animation="slide-bottom" threshold={0.2}>
       <section id="who-is-lina" className="relative w-full flex flex-col items-center py-8 md:py-16 px-4">
         <div className="w-full max-w-[473px] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] text-center tracking-[0] leading-[1.2] [direction:rtl]">
           {content.about.title}
@@ -92,10 +96,12 @@ export const HomePageHosts = (): JSX.Element => {
         </div>
 
         <div className="relative w-full max-w-[307px] h-auto mt-8 md:mt-16">
-          <img className="w-full h-auto" alt="Frame" src={content.about.image} />
+          <img className="w-full h-auto animate-float" alt="Frame" src={content.about.image} />
         </div>
       </section>
+      </AnimatedSection>
 
+      <AnimatedSection animation="scale" threshold={0.2}>
       <section className="relative w-full flex flex-col items-center py-8 md:py-16 px-4">
         <div className="w-full max-w-[836px] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] leading-[1.16] text-center tracking-[0] [direction:rtl]">
           {content.packages.title}
@@ -134,7 +140,9 @@ export const HomePageHosts = (): JSX.Element => {
           </div>
         </Button>
       </section>
+      </AnimatedSection>
 
+      <AnimatedSection animation="slide-bottom" threshold={0.2}>
       <section id="faq" className="relative w-full flex flex-col items-center py-8 md:py-16 px-4">
         <div className="w-full max-w-[940px] bg-[#7f6cff] rounded-[10px] shadow-[0px_6px_11px_#00000040] py-6 px-6 md:px-8 flex items-center justify-center">
           <div className="[font-family:'Secular_One',Helvetica] font-normal text-white text-[28px] md:text-4xl tracking-[0] leading-[1.16] [direction:rtl]">
@@ -184,6 +192,7 @@ export const HomePageHosts = (): JSX.Element => {
           )}
         </div>
       </section>
+      </AnimatedSection>
 
       <FaqSection />
       <FooterSection />
