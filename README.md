@@ -2,6 +2,28 @@
 
 A modern React-based web application that connects hosts with guests through WhatsApp integration. The platform features dynamic content switching between host and guest views, with a clean and professional Hebrew interface.
 
+## Form Features:
+
+Collects: full name, phone, user type (host/guest), and message
+Form validation (all fields required)
+Phone number validation (9-10 digits)
+Loading state during submission
+Success screen after submission
+How to use:
+
+Replace VITE_CRM_API_URL in .env with your actual CRM API endpoint
+The form sends this JSON structure:
+
+{
+  "name": "Full Name",
+  "phone": "+972501234567",
+  "type": "host",
+  "message": "User message",
+  "timestamp": "2025-11-23T10:30:00.000Z"
+}
+Note: If your CRM requires different field names or authentication headers (like API keys), you can easily modify the fetch request in the handleSubmit function.
+
+
 ## Features
 
 - **Dynamic Content Switching**: Toggle between host and guest content with smooth transitions
