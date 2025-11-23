@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "title": "השאר כותרת עבור מתארחים - תוכל לערוך אותה כאן",
+    "backgroundImage": "/mask-group.png"
+  },
+  "intro": {
+    "title": "השאר כותרת intro עבור מתארחים",
+    "buttonText": "צור קשר",
+    "subtitle": "השאר תת כותרת עבור מתארחים",
+    "image": "/frame.svg"
+  },
+  "about": {
+    "title": "מי זו לינה?",
+    "description": "לינה היא בוט המאפשר חיבור ישיר בין מתארחים למארחים. באמצעות שיחה פשוטה בוואטסאפ, לינה מקבלת את פרטי הבקשה, מעבדת אותם, ומעבירה פניות מותאמות למארחים רלוונטיים. הבוט פועל בצורה אוטומטית, מהירה ונגישה ללא צורך בהתקנה או אפליקציה נוספת.",
+    "image": "/frame-2.svg"
+  },
+  "packages": {
+    "title": "השאר כותרת חבילות עבור מתארחים",
+    "buttonText": "בחירת חבילות",
+    "mainImage": "/frame-1.svg",
+    "decorativeImage1": "/objects-1.svg",
+    "decorativeImage2": "/objects.svg",
+    "monthLabel": "אפריל"
+  },
+  "faq": {
+    "title": "מתארחים FAQ",
+    "icon": "/layer-1.svg",
+    "items": [
+      {
+        "id": "item-1",
+        "question": "שאלה 1 למתארחים - ערוך כאן",
+        "answer": "תשובה 1 למתארחים"
+      },
+      {
+        "id": "item-2",
+        "question": "שאלה 2 למתארחים - ערוך כאן",
+        "answer": "תשובה 2 למתארחים"
+      }
+    ],
+    "viewPackagesButton": "צפייה בחבילות",
+    "dividerImage": "/line-37.svg"
+  }
+}
