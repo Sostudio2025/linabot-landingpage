@@ -78,12 +78,8 @@ export const StickyTabs = ({ activeCard, onCardChange }: StickyTabsProps): JSX.E
                     border-0
                     cursor-pointer
                     hover:opacity-90
-                    hover:scale-105
-                    hover:shadow-2xl
-                    active:scale-95
                     transition-all
                     duration-300
-                    ${isActive ? 'animate-pulse-glow scale-105' : ''}
                   `}
                 >
                   <CardContent className="p-0 h-full">
@@ -161,12 +157,8 @@ export const StickyTabs = ({ activeCard, onCardChange }: StickyTabsProps): JSX.E
                     border-0
                     cursor-pointer
                     hover:opacity-90
-                    hover:scale-105
-                    hover:shadow-2xl
-                    active:scale-95
                     transition-all
                     duration-300
-                    ${isActive ? 'animate-pulse-glow scale-105' : ''}
                   `}
                 >
                   <CardContent className="p-0 h-full flex flex-col items-center justify-center px-3">
