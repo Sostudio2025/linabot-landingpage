@@ -77,12 +77,12 @@ const PackageCard = ({ pkg, index }: { pkg: typeof packagesData[0]; index: numbe
     </Card>
 
     <Button className="absolute bottom-[-32px] left-1/2 -translate-x-1/2 w-[269px] h-16 bg-[#7f6cff] hover:bg-[#6b5ce6] rounded-[50px] px-6 py-3">
-      <div className="w-[186px] h-[38px] [font-family:'Avenir_Next-Bold',Helvetica] font-bold text-[#fdfdfd] text-lg leading-[22.6px] text-center tracking-[0] [direction:rtl]">
-        <span className="[font-family:'Avenir_Next-Bold',Helvetica] font-bold text-[#fdfdfd] text-lg tracking-[0] leading-[22.6px]">
+      <div className="w-[186px] h-[38px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#fdfdfd] text-lg leading-[22.6px] text-center tracking-[0] [direction:rtl]">
+        <span className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#fdfdfd] text-lg tracking-[0] leading-[22.6px]">
           ₪
         </span>
         <span className="text-3xl leading-[37.6px]">{pkg.price}</span>
-        <span className="[font-family:'Avenir_Next-Bold',Helvetica] font-bold text-[#fdfdfd] text-lg tracking-[0] leading-[22.6px]">
+        <span className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#fdfdfd] text-lg tracking-[0] leading-[22.6px]">
           {" "}
           לחודש
         </span>
@@ -92,7 +92,7 @@ const PackageCard = ({ pkg, index }: { pkg: typeof packagesData[0]; index: numbe
     {pkg.badge && (
       <div className="absolute top-[-12px] right-[-36px] w-[82px] h-20">
         <div className="absolute top-0 left-0 w-20 h-20 bg-[#ffc300] rounded-[39.99px]" />
-        <div className="absolute top-6 left-1 w-[72px] [font-family:'Avenir_Next-Bold',Helvetica] font-bold text-gray-1 text-base leading-[18.6px] text-center tracking-[0] [direction:rtl]">
+        <div className="absolute top-6 left-1 w-[72px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-gray-1 text-base leading-[18.6px] text-center tracking-[0] [direction:rtl]">
           הכי <br />
           משתלמת
         </div>
@@ -163,7 +163,7 @@ export const OurPackages = (): JSX.Element => {
           כל חבילה כוללת פניות מאומתות מאורחים פוטנציאליים.
         </h1>
 
-        <p className="mt-[33px] w-full max-w-[875px] px-4 [font-family:'IBM_Plex_Sans',Helvetica] font-bold text-gray-2 text-lg md:text-2xl leading-[1.2] text-center tracking-[0] [direction:rtl] animate-fade-in">
+        <p className="mt-[33px] w-full max-w-[875px] px-4 [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-gray-2 text-lg md:text-2xl leading-[1.2] text-center tracking-[0] [direction:rtl] animate-fade-in">
           אפשר לבטל בכל רגע
         </p>
 

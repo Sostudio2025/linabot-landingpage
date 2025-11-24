@@ -109,7 +109,7 @@ export const FooterSection = (): JSX.Element => {
                 </div>
 
                 <div className="absolute top-[136px] left-6 md:left-0 w-[80px] md:w-[115px] h-[60px] bg-white rounded-lg flex items-center justify-center">
-                  <span className="[font-family:'DM_Sans',Helvetica] font-normal text-[#999999] text-base md:text-lg tracking-[0] leading-[27px]">
+                  <span className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#999999] text-base md:text-lg tracking-[0] leading-[27px]">
                     +972
                   </span>
                 </div>
@@ -168,7 +168,7 @@ export const FooterSection = (): JSX.Element => {
                   </RadioGroup>
                 </div>
 
-                <div className="absolute top-[287px] right-6 md:left-auto md:right-[17px] w-full md:w-[248px] [font-family:'DM_Sans',Helvetica] font-normal text-white text-[18px] md:text-[21px] tracking-[0] leading-[31.5px] [direction:rtl]">
+                <div className="absolute top-[287px] right-6 md:left-auto md:right-[17px] w-full md:w-[248px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[18px] md:text-[21px] tracking-[0] leading-[31.5px] [direction:rtl]">
                   כתיבת פנייה
                 </div>
 
@@ -176,7 +176,7 @@ export const FooterSection = (): JSX.Element => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
-                  className="absolute top-[319px] left-6 right-6 md:left-px md:right-auto w-[calc(100%-48px)] md:w-[666px] h-[150px] bg-white rounded-lg border-0 text-right [font-family:'DM_Sans',Helvetica] text-lg text-[#999999] resize-none"
+                  className="absolute top-[319px] left-6 right-6 md:left-px md:right-auto w-[calc(100%-48px)] md:w-[666px] h-[150px] bg-white rounded-lg border-0 text-right [font-family:'IBM_Plex_Sans',Helvetica] text-lg text-[#999999] resize-none"
                   placeholder="אני פונה בקשר ל..."
                   dir="rtl"
                 />
@@ -187,7 +187,7 @@ export const FooterSection = (): JSX.Element => {
                 disabled={isSubmitting}
                 className="absolute top-[610px] md:top-[640px] left-1/2 -translate-x-1/2 w-full max-w-[310px] mx-4 min-h-[50px] bg-[#7f6cff] hover:bg-[#6b5ce6] disabled:opacity-50 disabled:cursor-not-allowed rounded-[50px] px-6 py-3"
               >
-                <span className="font-semibold text-xl md:text-2xl [font-family:'IBM_Plex_Sans',Helvetica] text-white [direction:rtl]">
+                <span className="font-normal text-xl md:text-2xl [font-family:'IBM_Plex_Sans',Helvetica] text-white [direction:rtl]">
                   {isSubmitting ? "שולח..." : "שליחה"}
                 </span>
               </Button>
@@ -226,7 +226,7 @@ export const FooterSection = (): JSX.Element => {
             src="/---------copy--1--1.png"
           />
 
-          <h3 className="absolute top-[100px] md:top-[140px] left-1/2 -translate-x-1/2 font-medium text-[#17c3b2] text-[18px] md:text-[21px] text-center leading-[52.5px] [font-family:'IBM_Plex_Sans',Helvetica] tracking-[0] [direction:rtl] animate-fade-in">
+          <h3 className="absolute top-[100px] md:top-[140px] left-1/2 -translate-x-1/2 font-normal text-[#17c3b2] text-[18px] md:text-[21px] text-center leading-[52.5px] [font-family:'IBM_Plex_Sans',Helvetica] tracking-[0] [direction:rtl] animate-fade-in">
             מפת אתר
           </h3>
 

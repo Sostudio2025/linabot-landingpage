@@ -60,7 +60,7 @@ export const HomePageHosts = (): JSX.Element => {
 
         {activeType === "מתארחים" ? (
           <Button className="flex w-full max-w-[340px] min-h-[64px] items-center justify-center gap-3 px-6 py-3 mt-8 bg-[#25D366] rounded-[50px] hover:bg-[#1fb855]">
-            <div className="relative w-fit [font-family:'IBM_Plex_Sans',Helvetica] font-bold text-white text-[18px] md:text-[21px] text-left tracking-[0] leading-[30px] [direction:rtl]">
+            <div className="relative w-fit [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[18px] md:text-[21px] text-left tracking-[0] leading-[30px] [direction:rtl]">
               דברו עם לינה עכשיו
             </div>
             <svg
@@ -79,13 +79,13 @@ export const HomePageHosts = (): JSX.Element => {
           </Button>
         ) : (
           <Button className="flex w-full max-w-[340px] min-h-[64px] items-center justify-center gap-2.5 px-6 py-3 mt-8 bg-[#7f6cff] rounded-[50px] hover:bg-[#6b5ce6]">
-            <div className="relative w-fit [font-family:'IBM_Plex_Sans',Helvetica] font-bold text-white text-[18px] md:text-[21px] text-left tracking-[0] leading-[30px] [direction:rtl]">
+            <div className="relative w-fit [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[18px] md:text-[21px] text-left tracking-[0] leading-[30px] [direction:rtl]">
               {content.intro.buttonText}
             </div>
           </Button>
         )}
 
-        <div className="w-full max-w-[875px] [font-family:'IBM_Plex_Sans',Helvetica] font-bold text-gray-2 text-[18px] md:text-2xl leading-[1.2] text-center tracking-[0] [direction:rtl] mt-6">
+        <div className="w-full max-w-[875px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-gray-2 text-[18px] md:text-2xl leading-[1.2] text-center tracking-[0] [direction:rtl] mt-6">
           {content.intro.subtitle}
         </div>
 
@@ -143,7 +143,7 @@ export const HomePageHosts = (): JSX.Element => {
           onClick={() => navigate('/packages')}
           className="flex items-center justify-center gap-2.5 px-6 py-3 mt-8 bg-[#7f6cff] rounded-[50px] hover:bg-[#6b5ce6] min-h-[48px]"
         >
-          <div className="relative w-fit font-semibold text-[18px] md:text-[21px] text-left [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
+          <div className="relative w-fit font-normal text-[18px] md:text-[21px] text-left [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
             {content.packages.buttonText}
           </div>
         </Button>
@@ -190,7 +190,7 @@ export const HomePageHosts = (): JSX.Element => {
                 onClick={() => navigate('/packages')}
                 className="bg-[#1fd1cc] rounded-[21px] hover:bg-[#1ab8b4] px-8 py-2 min-h-[48px]"
               >
-                <div className="font-bold text-[18px] md:text-[21px] text-center [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
+                <div className="font-normal text-[18px] md:text-[21px] text-center [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
                   {content.faq.viewPackagesButton}
                 </div>
               </Button>

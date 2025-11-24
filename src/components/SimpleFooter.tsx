@@ -24,7 +24,7 @@ export const SimpleFooter = (): JSX.Element => {
         src="/---------copy--1--1.png"
       />
 
-      <h3 className="absolute top-[100px] md:top-[140px] left-1/2 -translate-x-1/2 font-medium text-[#17c3b2] text-[18px] md:text-[21px] text-center leading-[52.5px] [font-family:'IBM_Plex_Sans',Helvetica] tracking-[0] [direction:rtl]">
+      <h3 className="absolute top-[100px] md:top-[140px] left-1/2 -translate-x-1/2 font-normal text-[#17c3b2] text-[18px] md:text-[21px] text-center leading-[52.5px] [font-family:'IBM_Plex_Sans',Helvetica] tracking-[0] [direction:rtl]">
         מפת אתר
       </h3>
 
