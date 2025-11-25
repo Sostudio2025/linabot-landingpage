@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
+
+const navigationLinks = [
+  "אודות",
+  "מי זו לינה?",
+  "FAQ מתארחים",
+  "FAQ מארחים",
+  "צור קשר",
+  "תקנון ותנאי שימוש",
+  "מדיניות הפרטיות",
+];
 
 const siteMapLinks = {
   about: [
@@ -19,6 +29,49 @@ const siteMapLinks = {
 
 export const ThankYouPage = (): JSX.Element => {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+
+  const handleNavClick = (e: React.MouseEvent, linkText: string) => {
+    if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
+      e.preventDefault();
+      setIsMenuOpen(false);
+      navigate('/terms');
+      return;
+    }
+
+    let targetId = "";
+    if (linkText === "אודות") targetId = "about";
+    if (linkText === "מי זו לינה?") targetId = "who-is-lina";
+    if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") targetId = "faq";
+    if (linkText === "צור קשר") targetId = "contact";
+
+    if (targetId) {
+      e.preventDefault();
+      setIsMenuOpen(false);
+      navigate('/', { state: { scrollTo: targetId } });
+    }
+  };
+
+  const getNavLinkHref = (linkText: string) => {
+    if (linkText === "אודות") return "#about";
+    if (linkText === "מי זו לינה?") return "#who-is-lina";
+    if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") return "#faq";
+    if (linkText === "צור קשר") return "#contact";
+    return "#";
+  };
 
   const handleLinkClick = (e: React.MouseEvent, linkText: string) => {
     e.preventDefault();
@@ -49,6 +102,66 @@ export const ThankYouPage = (): JSX.Element => {
 
   return (
     <div className="bg-white overflow-hidden w-full relative">
+      {/* Header */}
+      <header className="relative w-full bg-[#073d37] py-4">
+        <div className="absolute top-4 left-4 md:left-[158px] w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
+
+        {/* Mobile menu button */}
+        {!isMenuOpen && (
+          <div className="md:hidden absolute top-4 right-4 z-50">
+            <button
+              className="w-[24px] h-[24px] flex flex-col justify-center items-center gap-[4px]"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Toggle menu"
+            >
+              <span className="w-6 h-[2.5px] rounded-full bg-white"></span>
+              <span className="w-6 h-[2.5px] rounded-full bg-white"></span>
+              <span className="w-6 h-[2.5px] rounded-full bg-white"></span>
+            </button>
+          </div>
+        )}
+
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden fixed top-0 left-0 w-full h-screen bg-black/90 z-50 flex flex-col items-end pt-20 pr-8 overflow-hidden">
+            <div className="absolute top-4 left-4 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
+            <button
+              className="absolute top-4 right-4 text-white text-4xl font-light w-10 h-10 flex items-center justify-center"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              ×
+            </button>
+            {navigationLinks.map((link, index) => (
+              <a
+                key={index}
+                href={getNavLinkHref(link)}
+                className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[28px] tracking-[0] [direction:rtl] mb-6"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {/* Desktop navigation */}
+        <nav className="hidden md:block absolute top-4 left-1/2 -translate-x-1/2 w-[819px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-base tracking-[0] leading-[17.1px] [direction:rtl]">
+          {navigationLinks.map((link, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && "\u00A0\u00A0\u00A0\u00A0"}
+              <a
+                href={getNavLinkHref(link)}
+                className="hover:underline cursor-pointer"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                {link}
+              </a>
+            </React.Fragment>
+          ))}
+        </nav>
+      </header>
+
       <section className="relative w-full flex flex-col items-center py-16 md:py-24 px-4">
         <div className="w-full max-w-[600px] flex flex-col items-center">
           <img
