@@ -13,14 +13,14 @@ const navigationLinks = [
 ];
 
 const siteMapLinks = {
-  about: [
+  right: [
     { text: "אודות" },
     { text: "מי זו לינה?" },
-    { text: "FAQ מתארחים" },
-    { text: "FAQ מארחים" },
+    { text: "מתארחים FAQ" },
+    { text: "מארחים FAQ" },
   ],
-  legal: [
-    { text: "FAQ מארחים" },
+  left: [
+    { text: "מארחים FAQ" },
     { text: "צור קשר" },
     { text: "תקנון ותנאי שימוש" },
     { text: "מדיניות הפרטיות" },
@@ -84,7 +84,7 @@ export const ThankYouPage = (): JSX.Element => {
     let targetId = "";
     if (linkText === "אודות") targetId = "about";
     if (linkText === "מי זו לינה?") targetId = "who-is-lina";
-    if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") targetId = "faq";
+    if (linkText.includes("מתארחים") || linkText.includes("מארחים")) targetId = "faq";
     if (linkText === "צור קשר") targetId = "contact";
 
     if (targetId) {
@@ -95,36 +95,62 @@ export const ThankYouPage = (): JSX.Element => {
   const getLinkHref = (linkText: string) => {
     if (linkText === "אודות") return "#about";
     if (linkText === "מי זו לינה?") return "#who-is-lina";
-    if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") return "#faq";
+    if (linkText.includes("מתארחים") || linkText.includes("מארחים")) return "#faq";
     if (linkText === "צור קשר") return "#contact";
     return "#";
   };
 
   return (
-    <div className="bg-white overflow-hidden w-full relative">
-      {/* Header */}
-      <header className="relative w-full bg-[#073d37] py-4">
-        <div className="absolute top-4 left-4 md:left-[158px] w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
+    <div className="bg-white overflow-hidden w-full relative min-h-screen flex flex-col">
+      {/* Header - White background */}
+      <header className="relative w-full bg-white py-4 border-b border-gray-100">
+        <div className="max-w-[1200px] mx-auto px-4 flex items-center justify-between">
+          <div
+            className="w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+            onClick={() => navigate('/')}
+            role="button"
+            aria-label="Go to home page"
+          />
 
-        {/* Mobile menu button */}
-        {!isMenuOpen && (
-          <div className="md:hidden absolute top-4 right-4 z-50">
-            <button
-              className="w-[24px] h-[24px] flex flex-col justify-center items-center gap-[4px]"
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Toggle menu"
-            >
-              <span className="w-6 h-[2.5px] rounded-full bg-white"></span>
-              <span className="w-6 h-[2.5px] rounded-full bg-white"></span>
-              <span className="w-6 h-[2.5px] rounded-full bg-white"></span>
-            </button>
-          </div>
-        )}
+          {/* Mobile menu button */}
+          {!isMenuOpen && (
+            <div className="md:hidden">
+              <button
+                className="w-[24px] h-[24px] flex flex-col justify-center items-center gap-[4px]"
+                onClick={() => setIsMenuOpen(true)}
+                aria-label="Toggle menu"
+              >
+                <span className="w-6 h-[2.5px] rounded-full bg-[#073d37]"></span>
+                <span className="w-6 h-[2.5px] rounded-full bg-[#073d37]"></span>
+                <span className="w-6 h-[2.5px] rounded-full bg-[#073d37]"></span>
+              </button>
+            </div>
+          )}
+
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex items-center gap-6 [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#073d37] text-sm tracking-[0] [direction:rtl]">
+            {navigationLinks.map((link, index) => (
+              <a
+                key={index}
+                href={getNavLinkHref(link)}
+                className="hover:text-[#17c3b2] cursor-pointer transition-colors"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                {link}
+              </a>
+            ))}
+          </nav>
+        </div>
 
         {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden fixed top-0 left-0 w-full h-screen bg-black/90 z-50 flex flex-col items-end pt-20 pr-8 overflow-hidden">
-            <div className="absolute top-4 left-4 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
+            <div
+              className="absolute top-4 left-4 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+              onClick={() => { setIsMenuOpen(false); navigate('/'); }}
+              role="button"
+              aria-label="Go to home page"
+            />
             <button
               className="absolute top-4 right-4 text-white text-4xl font-light w-10 h-10 flex items-center justify-center"
               onClick={() => setIsMenuOpen(false)}
@@ -144,25 +170,10 @@ export const ThankYouPage = (): JSX.Element => {
             ))}
           </div>
         )}
-
-        {/* Desktop navigation */}
-        <nav className="hidden md:block absolute top-4 left-1/2 -translate-x-1/2 w-[819px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-base tracking-[0] leading-[17.1px] [direction:rtl]">
-          {navigationLinks.map((link, index) => (
-            <React.Fragment key={index}>
-              {index > 0 && "\u00A0\u00A0\u00A0\u00A0"}
-              <a
-                href={getNavLinkHref(link)}
-                className="hover:underline cursor-pointer"
-                onClick={(e) => handleNavClick(e, link)}
-              >
-                {link}
-              </a>
-            </React.Fragment>
-          ))}
-        </nav>
       </header>
 
-      <section className="relative w-full flex flex-col items-center py-16 md:py-24 px-4">
+      {/* Main content */}
+      <section className="flex-1 relative w-full flex flex-col items-center py-16 md:py-24 px-4">
         <div className="w-full max-w-[600px] flex flex-col items-center">
           <img
             src="/thankyouicon.svg"
@@ -180,9 +191,9 @@ export const ThankYouPage = (): JSX.Element => {
             </p>
           </div>
 
-          <Button className="flex w-full max-w-[340px] min-h-[64px] items-center justify-center gap-3 px-6 py-3 mt-8 bg-[#25D366] rounded-[50px] hover:bg-[#1fb855]">
+          <Button className="flex w-full max-w-[340px] min-h-[64px] items-center justify-center gap-3 px-6 py-3 mt-8 bg-[#17c3b2] rounded-[50px] hover:bg-[#14a89a]">
             <div className="relative w-fit [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[18px] md:text-[21px] text-left tracking-[0] leading-[30px] [direction:rtl]">
-              דברו עם לינה עכשיו
+              חזרה לשיחה
             </div>
             <svg
               width="28"
@@ -205,47 +216,50 @@ export const ThankYouPage = (): JSX.Element => {
         </div>
       </section>
 
-      <footer className="w-full min-h-[550px] md:min-h-[488px] h-auto bg-[#073d37] relative pb-12 md:pb-8">
-        <img
-          className="absolute top-[60px] md:top-[91px] left-1/2 -translate-x-1/2 w-[100px] h-[26px] md:w-[126px] md:h-[33px] object-cover"
-          alt="Copy"
-          src="/---------copy--1--1.png"
-        />
+      {/* Footer */}
+      <footer className="w-full min-h-[400px] md:min-h-[350px] bg-[#073d37] relative pb-12 md:pb-8">
+        <div className="pt-12 md:pt-16 flex flex-col items-center">
+          <img
+            className="w-[100px] h-[26px] md:w-[126px] md:h-[33px] object-cover cursor-pointer"
+            alt="LinaBot - Go to home page"
+            src="/---------copy--1--1.png"
+            onClick={() => navigate('/')}
+            role="button"
+          />
 
-        <h3 className="absolute top-[100px] md:top-[140px] left-1/2 -translate-x-1/2 font-normal text-[#17c3b2] text-[18px] md:text-[21px] text-center leading-[52.5px] [font-family:'IBM_Plex_Sans',Helvetica] tracking-[0] [direction:rtl] animate-fade-in">
-          מפת אתר
-        </h3>
+          <h3 className="mt-6 font-normal text-[#17c3b2] text-[18px] md:text-[21px] text-center [font-family:'IBM_Plex_Sans',Helvetica] tracking-[0] [direction:rtl]">
+            מפת אתר
+          </h3>
 
-        <div className="absolute top-[150px] md:top-[194px] left-1/2 -translate-x-1/2 flex flex-col md:flex-row gap-6 md:gap-[100px] [direction:rtl] px-4">
-          <nav className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-sm md:text-base tracking-[0] text-right">
-            {siteMapLinks.legal.map((link, index) => (
-              <a
-                key={index}
-                href={getLinkHref(link.text)}
-                onClick={(e) => handleLinkClick(e, link.text)}
-                className="block text-white leading-8 md:leading-[33.6px] cursor-pointer hover:text-[#17c3b2] transition-colors"
-              >
-                {link.text}
-              </a>
-            ))}
-          </nav>
+          <div className="mt-6 flex flex-col md:flex-row gap-8 md:gap-[100px] [direction:rtl] px-4">
+            <nav className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-sm md:text-base tracking-[0] text-center md:text-right">
+              {siteMapLinks.left.map((link, index) => (
+                <a
+                  key={index}
+                  href={getLinkHref(link.text)}
+                  onClick={(e) => handleLinkClick(e, link.text)}
+                  className="block text-white leading-8 md:leading-[33.6px] cursor-pointer hover:text-[#17c3b2] transition-colors"
+                >
+                  {link.text}
+                </a>
+              ))}
+            </nav>
 
-          <nav className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-sm md:text-base tracking-[0] text-right">
-            {siteMapLinks.about.map((link, index) => (
-              <a
-                key={index}
-                href={getLinkHref(link.text)}
-                onClick={(e) => handleLinkClick(e, link.text)}
-                className="block text-white leading-8 md:leading-[33.6px] cursor-pointer hover:text-[#17c3b2] transition-colors"
-              >
-                {link.text}
-              </a>
-            ))}
-          </nav>
-        </div>
+            <nav className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-sm md:text-base tracking-[0] text-center md:text-right">
+              {siteMapLinks.right.map((link, index) => (
+                <a
+                  key={index}
+                  href={getLinkHref(link.text)}
+                  onClick={(e) => handleLinkClick(e, link.text)}
+                  className="block text-white leading-8 md:leading-[33.6px] cursor-pointer hover:text-[#17c3b2] transition-colors"
+                >
+                  {link.text}
+                </a>
+              ))}
+            </nav>
+          </div>
 
-        <div className="absolute bottom-8 md:bottom-auto md:top-[392px] left-1/2 -translate-x-1/2 w-full max-w-[350px] h-auto flex justify-center px-4">
-          <p className="w-auto [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-xs md:text-sm text-center tracking-[0] leading-6 [direction:rtl]">
+          <p className="mt-12 [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-xs md:text-sm text-center tracking-[0] leading-6 [direction:rtl]">
             © 2025 LinaBot - כל הזכויות שמורות
           </p>
         </div>

@@ -54,12 +54,22 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
 
       <div className="absolute top-0 left-0 w-full h-[395px] md:h-[527px] bg-[#0000008f]" />
 
-      <div className="absolute top-4 left-4 md:top-7 md:left-[158px] w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
+      <div
+        className="absolute top-4 left-4 md:top-7 md:left-[158px] w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+        onClick={() => navigate('/')}
+        role="button"
+        aria-label="Go to home page"
+      />
 
       {!isMenuOpen && (
         <div className={`md:hidden ${isScrolled ? 'fixed top-0 left-0 right-0 bg-white z-[60] h-[64px] flex items-center justify-between px-4' : 'absolute top-4 right-4 z-50'} transition-all duration-300`}>
           {isScrolled && (
-            <div className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
+            <div
+              className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+              onClick={() => navigate('/')}
+              role="button"
+              aria-label="Go to home page"
+            />
           )}
           <button
             className="w-[24px] h-[24px] flex flex-col justify-center items-center gap-[4px]"
@@ -75,7 +85,12 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
 
       {isMenuOpen && (
         <div className="md:hidden fixed top-0 left-0 w-full h-screen bg-black/90 z-50 flex flex-col items-end pt-20 pr-8 overflow-hidden">
-          <div className="absolute top-4 left-4 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%]" />
+          <div
+            className="absolute top-4 left-4 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+            onClick={() => { setIsMenuOpen(false); navigate('/'); }}
+            role="button"
+            aria-label="Go to home page"
+          />
           <button
             className="absolute top-4 right-4 text-white text-4xl font-light w-10 h-10 flex items-center justify-center"
             onClick={() => setIsMenuOpen(false)}

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const siteMapLinks = {
   about: [
@@ -16,12 +17,16 @@ const siteMapLinks = {
 };
 
 export const SimpleFooter = (): JSX.Element => {
+  const navigate = useNavigate();
+
   return (
     <footer className="w-full min-h-[550px] md:min-h-[488px] h-auto bg-[#073d37] relative pb-12 md:pb-8">
       <img
-        className="absolute top-[60px] md:top-[91px] left-1/2 -translate-x-1/2 w-[100px] h-[26px] md:w-[126px] md:h-[33px] object-cover"
-        alt="Copy"
+        className="absolute top-[60px] md:top-[91px] left-1/2 -translate-x-1/2 w-[100px] h-[26px] md:w-[126px] md:h-[33px] object-cover cursor-pointer"
+        alt="LinaBot - Go to home page"
         src="/---------copy--1--1.png"
+        onClick={() => navigate('/')}
+        role="button"
       />
 
       <h3 className="absolute top-[100px] md:top-[140px] left-1/2 -translate-x-1/2 font-normal text-[#17c3b2] text-[18px] md:text-[21px] text-center leading-[52.5px] [font-family:'IBM_Plex_Sans',Helvetica] tracking-[0] [direction:rtl]">
