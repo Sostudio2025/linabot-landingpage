@@ -85,9 +85,10 @@ export const HomePageHosts = (): JSX.Element => {
           </Button>
         )}
 
-        <div className="w-full max-w-[875px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-gray-2 text-[18px] md:text-2xl leading-[1.2] text-center tracking-[0] [direction:rtl] mt-6">
-          {content.intro.subtitle}
-        </div>
+        <div
+          className="w-full max-w-[875px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-gray-2 text-[18px] md:text-2xl leading-[1.4] text-center tracking-[0] [direction:rtl] mt-6"
+          dangerouslySetInnerHTML={{ __html: content.intro.subtitle }}
+        />
 
         <img
           className="w-full max-w-[397px] h-auto mt-8 md:mt-16"
