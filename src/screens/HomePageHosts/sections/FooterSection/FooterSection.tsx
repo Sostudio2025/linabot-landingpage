@@ -40,20 +40,33 @@ export const FooterSection = (): JSX.Element => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const AIRTABLE_BASE_ID = "appStXZuFBXRo4K0s";
+    const AIRTABLE_TABLE_ID = "tbl7mj9sy44Pbhf4F";
+    const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY;
+
     try {
-      const response = await fetch(import.meta.env.VITE_CRM_API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.fullName,
-          phone: `+972${formData.phone}`,
-          type: formData.userType,
-          message: formData.message,
-          timestamp: new Date().toISOString(),
-        }),
-      });
+      const response = await fetch(
+        `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            records: [
+              {
+                fields: {
+                  Name: formData.fullName,
+                  WA_number: `+972${formData.phone}`,
+                  "Sender type": formData.userType === "host" ? "Supplier" : "Customer",
+                  Message: formData.message,
+                },
+              },
+            ],
+          }),
+        }
+      );
 
       if (response.ok) {
         setIsSubmitted(true);
