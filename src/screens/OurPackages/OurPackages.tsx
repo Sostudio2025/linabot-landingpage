@@ -9,6 +9,7 @@ const packagesData = [
   {
     title: "פרימיום",
     price: "49",
+    productId: 65,
     features: [
       "פניות ללא הגבלה",
       "התחדשות אוטומטית",
@@ -22,6 +23,7 @@ const packagesData = [
   {
     title: "בסיסית",
     price: "29",
+    productId: 63,
     features: [
       "עד 20 פניות בחודש",
       "התחדשות אוטומטית",
@@ -33,6 +35,7 @@ const packagesData = [
   {
     title: "מתקדמת",
     price: "39",
+    productId: 64,
     features: [
       "עד 40 פניות בחודש",
       "התחדשות אוטומטית",
@@ -44,6 +47,15 @@ const packagesData = [
     badge: "הכי משתלמת",
   },
 ];
+
+const handlePackageSelect = (productId: number) => {
+  if (productId === 0) {
+    console.warn("Product ID not configured");
+    return;
+  }
+  const wooUrl = import.meta.env.VITE_WOOCOMMERCE_URL;
+  window.location.href = `${wooUrl}/checkout/?add-to-cart=${productId}`;
+};
 
 const PackageCard = ({ pkg, index }: { pkg: typeof packagesData[0]; index: number }) => (
   <div className="relative min-w-[304px] w-[304px] flex-shrink-0">
@@ -76,7 +88,10 @@ const PackageCard = ({ pkg, index }: { pkg: typeof packagesData[0]; index: numbe
       </CardContent>
     </Card>
 
-    <Button className="absolute bottom-[-32px] left-1/2 -translate-x-1/2 w-[269px] h-16 bg-[#7f6cff] hover:bg-[#6b5ce6] rounded-[50px] px-6 py-3">
+    <Button
+      onClick={() => handlePackageSelect(pkg.productId)}
+      className="absolute bottom-[-32px] left-1/2 -translate-x-1/2 w-[269px] h-16 bg-[#7f6cff] hover:bg-[#6b5ce6] rounded-[50px] px-6 py-3 cursor-pointer"
+    >
       <div className="w-[186px] h-[38px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#fdfdfd] text-lg leading-[22.6px] text-center tracking-[0] [direction:rtl]">
         <span className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#fdfdfd] text-lg tracking-[0] leading-[22.6px]">
           ₪
