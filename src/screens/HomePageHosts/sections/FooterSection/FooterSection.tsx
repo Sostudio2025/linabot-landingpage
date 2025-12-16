@@ -44,6 +44,9 @@ export const FooterSection = (): JSX.Element => {
     const AIRTABLE_TABLE_ID = "tbl7mj9sy44Pbhf4F";
     const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY;
 
+    console.log("Submitting to Airtable...");
+    console.log("API Key exists:", !!AIRTABLE_API_KEY);
+
     try {
       const response = await fetch(
         `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`,
@@ -68,10 +71,14 @@ export const FooterSection = (): JSX.Element => {
         }
       );
 
+      console.log("Response status:", response.status);
+      const data = await response.json();
+      console.log("Response data:", data);
+
       if (response.ok) {
         setIsSubmitted(true);
       } else {
-        console.error("Failed to submit form");
+        console.error("Failed to submit form:", data);
         setIsSubmitted(true);
       }
     } catch (error) {
