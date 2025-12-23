@@ -9,7 +9,7 @@ const packagesData = [
   {
     title: "פרימיום",
     price: "49",
-    productId: 65,
+    productId: 92,
     features: [
       "פניות ללא הגבלה",
       "התחדשות אוטומטית",
@@ -23,7 +23,7 @@ const packagesData = [
   {
     title: "בסיסית",
     price: "29",
-    productId: 63,
+    productId: 83,
     features: [
       "עד 20 פניות בחודש",
       "התחדשות אוטומטית",
@@ -35,7 +35,7 @@ const packagesData = [
   {
     title: "מתקדמת",
     price: "39",
-    productId: 64,
+    productId: 91,
     features: [
       "עד 40 פניות בחודש",
       "התחדשות אוטומטית",
