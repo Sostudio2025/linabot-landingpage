@@ -1,14 +1,148 @@
-import React from "react";
-import { HeroSection } from "../HomePageHosts/sections/HeroSection";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FooterSection } from "../HomePageHosts/sections/FooterSection";
 
+const navigationLinks = [
+  "אודות",
+  "מי זו לינה?",
+  "FAQ מתארחים",
+  "FAQ מארחים",
+  "צור קשר",
+  "תקנון ותנאי שימוש",
+  "מדיניות הפרטיות",
+];
+
 export const TermsPage = (): JSX.Element => {
+  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (e: React.MouseEvent, linkText: string) => {
+    if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
+      e.preventDefault();
+      setIsMenuOpen(false);
+      return;
+    }
+
+    let targetId = "";
+    if (linkText === "אודות") targetId = "about";
+    if (linkText === "מי זו לינה?") targetId = "who-is-lina";
+    if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") targetId = "faq";
+    if (linkText === "צור קשר") targetId = "contact";
+
+    if (targetId) {
+      e.preventDefault();
+      setIsMenuOpen(false);
+      navigate('/', { state: { scrollTo: targetId } });
+    }
+  };
+
   return (
     <div className="bg-white overflow-hidden w-full relative">
-      <HeroSection
-        heroTitle="תקנון ותנאי שימוש – לינה בוט"
-        backgroundImage="/mask-group.png"
-      />
+      {/* Simple header without background image */}
+      <header className="relative w-full bg-white pt-4 pb-8">
+        {/* Logo */}
+        <div
+          className="absolute top-4 left-4 md:top-7 md:left-[158px] w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+          onClick={() => navigate('/')}
+          role="button"
+          aria-label="Go to home page"
+        />
+
+        {/* Mobile hamburger menu button */}
+        {!isMenuOpen && (
+          <div className={`md:hidden ${isScrolled ? 'fixed top-0 left-0 right-0 bg-white z-[60] h-[64px] flex items-center justify-between px-4' : 'absolute top-4 right-4 z-50'} transition-all duration-300`}>
+            {isScrolled && (
+              <div
+                className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+                onClick={() => navigate('/')}
+                role="button"
+                aria-label="Go to home page"
+              />
+            )}
+            <button
+              className="w-[24px] h-[24px] flex flex-col justify-center items-center gap-[4px]"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Toggle menu"
+            >
+              <span className="w-6 h-[2.5px] bg-[#17C3B2] rounded-full"></span>
+              <span className="w-6 h-[2.5px] bg-[#17C3B2] rounded-full"></span>
+              <span className="w-6 h-[2.5px] bg-[#17C3B2] rounded-full"></span>
+            </button>
+          </div>
+        )}
+
+        {/* Mobile menu overlay */}
+        {isMenuOpen && (
+          <div className="md:hidden fixed top-0 left-0 w-full h-screen bg-black/90 z-50 flex flex-col items-end pt-20 pr-8 overflow-hidden">
+            <div
+              className="absolute top-4 left-4 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+              onClick={() => { setIsMenuOpen(false); navigate('/'); }}
+              role="button"
+              aria-label="Go to home page"
+            />
+            <button
+              className="absolute top-4 right-4 text-white text-4xl font-light w-10 h-10 flex items-center justify-center"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              ×
+            </button>
+            {navigationLinks.map((link, index) => (
+              <a
+                key={index}
+                href="#"
+                className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-[28px] tracking-[0] [direction:rtl] mb-6"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {/* Desktop navigation */}
+        <nav className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-[819px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-base tracking-[0] leading-[17.1px] [direction:rtl]">
+          {navigationLinks.map((link, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && "\u00A0\u00A0\u00A0\u00A0"}
+              <a
+                href="#"
+                className="hover:underline cursor-pointer hover:text-[#7f6cff]"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                {link}
+              </a>
+            </React.Fragment>
+          ))}
+        </nav>
+
+        {/* Purple title */}
+        <h1 className="mt-16 md:mt-20 px-4 [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] text-center tracking-[0] leading-[1.2] [direction:rtl]">
+          תקנון ותנאי שימוש – לינה בוט
+        </h1>
+      </header>
 
       <section className="relative w-full flex flex-col items-center py-8 md:py-16 px-4 md:px-8">
         <div className="w-full max-w-[940px] [direction:rtl]">
