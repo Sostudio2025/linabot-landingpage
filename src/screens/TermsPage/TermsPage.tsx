@@ -13,7 +13,7 @@ export const TermsPage = (): JSX.Element => {
       <section className="relative w-full flex flex-col items-center py-8 md:py-16 px-4 md:px-8">
         <div className="w-full max-w-[940px] [direction:rtl]">
           <div className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-[16px] md:text-[18px] leading-[1.8] tracking-[0] space-y-6">
-            <p className="text-center mb-8">
+            <p className="text-right mb-8">
               ברוכים הבאים ללינה בוט ("השירות").
               <br />
               השירות מופעל על ידי ועמ חברה, בע"מ ("החברה").
