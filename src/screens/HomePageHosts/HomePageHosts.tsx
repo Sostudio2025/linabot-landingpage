@@ -142,7 +142,7 @@ export const HomePageHosts = (): JSX.Element => {
           {content.about.description}
         </div>
 
-        {content.about.image && (
+        {content.packages.hidden && content.about.image && (
           <div className="relative w-full max-w-[307px] h-auto mt-8 md:mt-16">
             <img className="w-full h-auto" alt="Frame" src={content.about.image} />
           </div>
@@ -155,29 +155,11 @@ export const HomePageHosts = (): JSX.Element => {
             {content.packages.title}
           </div>
 
-          <div className="relative w-full max-w-[445px] h-auto aspect-[445/325] mt-8 md:mt-16">
-            <img
-              className="absolute top-0 left-[15%] w-[76.6%] h-auto"
-              alt="Frame"
-              src={content.packages.mainImage}
-            />
-
-            <img
-              className="absolute w-[32.92%] h-auto top-[6.42%] left-[66.63%]"
-              alt="Objects"
-              src={content.packages.decorativeImage1}
-            />
-
-            <img
-              className="absolute top-[26.5%] left-[7%] w-[58.7%] h-auto"
-              alt="Objects"
-              src={content.packages.decorativeImage2}
-            />
-
-            <div className="absolute top-[32.6%] left-0 w-[80.7%] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[14px] md:text-lg text-center tracking-[0] leading-[1.16] [direction:rtl]">
-              {content.packages.monthLabel}
+          {content.about.image && (
+            <div className="relative w-full max-w-[397px] h-auto mt-8 md:mt-16">
+              <img className="w-full h-auto" alt="Frame" src={content.about.image} />
             </div>
-          </div>
+          )}
 
           <Button
             onClick={() => navigate('/packages')}
