@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   Accordion,
@@ -19,6 +19,7 @@ export const HomePageHosts = (): JSX.Element => {
   const location = useLocation();
   const [activeType, setActiveType] = useState<ContentType>("מארחים");
   const { content, loading } = useContent(activeType);
+  const pendingScrollRef = useRef<string | null>(null);
 
   const handleCardChange = (cardId: string) => {
     setActiveType(cardId as ContentType);
@@ -30,15 +31,24 @@ export const HomePageHosts = (): JSX.Element => {
       setActiveType(state.switchTab as ContentType);
     }
     if (state?.scrollTo) {
-      setTimeout(() => {
-        const targetSection = document.getElementById(state.scrollTo!);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 150);
+      pendingScrollRef.current = state.scrollTo;
       window.history.replaceState({}, document.title);
     }
   }, [location]);
+
+  // Scroll to target section after content is loaded
+  useEffect(() => {
+    if (!loading && content && pendingScrollRef.current) {
+      const targetId = pendingScrollRef.current;
+      pendingScrollRef.current = null;
+      setTimeout(() => {
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    }
+  }, [loading, content]);
 
   // Listen for switchTab custom event from navigation
   useEffect(() => {

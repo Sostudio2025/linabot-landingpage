@@ -46,15 +46,24 @@ export const TermsPage = (): JSX.Element => {
     }
 
     let targetId = "";
+    let switchToTab: string | null = null;
+
     if (linkText === "אודות") targetId = "about";
     if (linkText === "מי זו לינה?") targetId = "who-is-lina";
-    if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") targetId = "faq";
+    if (linkText === "FAQ מתארחים") {
+      targetId = "faq";
+      switchToTab = "מתארחים";
+    }
+    if (linkText === "FAQ מארחים") {
+      targetId = "faq";
+      switchToTab = "מארחים";
+    }
     if (linkText === "צור קשר") targetId = "contact";
 
     if (targetId) {
       e.preventDefault();
       setIsMenuOpen(false);
-      navigate('/', { state: { scrollTo: targetId } });
+      navigate('/', { state: { scrollTo: targetId, switchTab: switchToTab } });
     }
   };
 
