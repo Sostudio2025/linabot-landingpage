@@ -17,7 +17,6 @@ const siteMapLinks = {
     { text: "FAQ מארחים" },
   ],
   legal: [
-    { text: "FAQ מארחים" },
     { text: "צור קשר" },
     { text: "תקנון ותנאי שימוש" },
     { text: "מדיניות הפרטיות" },
@@ -266,11 +265,11 @@ export const FooterSection = (): JSX.Element => {
 
                   if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
                     navigate('/terms');
+                    window.scrollTo(0, 0);
                     return;
                   }
 
                   let targetId = "";
-                  if (linkText === "FAQ מארחים") targetId = "faq";
                   if (linkText === "צור קשר") targetId = "contact";
 
                   if (targetId) {
@@ -311,18 +310,32 @@ export const FooterSection = (): JSX.Element => {
                   e.preventDefault();
 
                   let targetId = "";
+                  let switchToTab: string | null = null;
+
                   if (linkText === "אודות") targetId = "about";
                   if (linkText === "מי זו לינה?") targetId = "who-is-lina";
-                  if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") targetId = "faq";
+                  if (linkText === "FAQ מתארחים") {
+                    targetId = "faq";
+                    switchToTab = "מתארחים";
+                  }
+                  if (linkText === "FAQ מארחים") {
+                    targetId = "faq";
+                    switchToTab = "מארחים";
+                  }
 
                   if (targetId) {
                     if (location.pathname !== '/') {
-                      navigate('/', { state: { scrollTo: targetId } });
+                      navigate('/', { state: { scrollTo: targetId, switchTab: switchToTab } });
                     } else {
-                      const targetSection = document.getElementById(targetId);
-                      if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      if (switchToTab) {
+                        window.dispatchEvent(new CustomEvent('switchTab', { detail: switchToTab }));
                       }
+                      setTimeout(() => {
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }, 100);
                     }
                   }
                 };
