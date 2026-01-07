@@ -169,6 +169,14 @@ export const HomePageHosts = (): JSX.Element => {
               {content.packages.buttonText}
             </div>
           </Button>
+
+          {content.packages.decorativeImage1 && (
+            <img
+              className="w-full max-w-[300px] h-auto mt-8"
+              alt="Calendar"
+              src={content.packages.decorativeImage1}
+            />
+          )}
         </section>
       )}
 
