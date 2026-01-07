@@ -196,6 +196,18 @@ export const HomePageHosts = (): JSX.Element => {
                     {item.answer && (
                       <AccordionContent className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-[18px] md:text-[21px] tracking-[0] leading-[normal] [direction:rtl] pt-4">
                         {item.answer}
+                        {index === 1 && !content.packages.hidden && (
+                          <div className="flex justify-center mt-6">
+                            <Button
+                              onClick={() => navigate('/packages')}
+                              className="bg-[#1fd1cc] rounded-[21px] hover:bg-[#1ab8b4] px-8 py-2 min-h-[48px]"
+                            >
+                              <div className="font-normal text-[18px] md:text-[21px] text-center [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
+                                {content.faq.viewPackagesButton}
+                              </div>
+                            </Button>
+                          </div>
+                        )}
                       </AccordionContent>
                     )}
                   </div>
@@ -206,19 +218,6 @@ export const HomePageHosts = (): JSX.Element => {
               </React.Fragment>
             ))}
           </Accordion>
-
-          {!content.packages.hidden && content.faq.items[1]?.answer && (
-            <div className="flex justify-center mt-6">
-              <Button
-                onClick={() => navigate('/packages')}
-                className="bg-[#1fd1cc] rounded-[21px] hover:bg-[#1ab8b4] px-8 py-2 min-h-[48px]"
-              >
-                <div className="font-normal text-[18px] md:text-[21px] text-center [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
-                  {content.faq.viewPackagesButton}
-                </div>
-              </Button>
-            </div>
-          )}
         </div>
       </section>
 
