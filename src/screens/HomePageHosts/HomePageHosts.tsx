@@ -25,17 +25,29 @@ export const HomePageHosts = (): JSX.Element => {
   };
 
   useEffect(() => {
-    const state = location.state as { scrollTo?: string } | null;
+    const state = location.state as { scrollTo?: string; switchTab?: string } | null;
+    if (state?.switchTab) {
+      setActiveType(state.switchTab as ContentType);
+    }
     if (state?.scrollTo) {
       setTimeout(() => {
         const targetSection = document.getElementById(state.scrollTo!);
         if (targetSection) {
           targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 100);
+      }, 150);
       window.history.replaceState({}, document.title);
     }
   }, [location]);
+
+  // Listen for switchTab custom event from navigation
+  useEffect(() => {
+    const handleSwitchTab = (e: CustomEvent) => {
+      setActiveType(e.detail as ContentType);
+    };
+    window.addEventListener('switchTab', handleSwitchTab as EventListener);
+    return () => window.removeEventListener('switchTab', handleSwitchTab as EventListener);
+  }, []);
 
   if (loading || !content) {
     return (

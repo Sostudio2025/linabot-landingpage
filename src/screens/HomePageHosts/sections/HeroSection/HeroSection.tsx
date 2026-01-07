@@ -116,9 +116,18 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
               }
 
               let targetId = "";
+              let switchToTab: string | null = null;
+
               if (linkText === "אודות") targetId = "about";
               if (linkText === "מי זו לינה?") targetId = "who-is-lina";
-              if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") targetId = "faq";
+              if (linkText === "FAQ מתארחים") {
+                targetId = "faq";
+                switchToTab = "מתארחים";
+              }
+              if (linkText === "FAQ מארחים") {
+                targetId = "faq";
+                switchToTab = "מארחים";
+              }
               if (linkText === "צור קשר") targetId = "contact";
 
               if (targetId) {
@@ -126,18 +135,18 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
                 setIsMenuOpen(false);
 
                 if (!isHomePage) {
-                  navigate('/');
+                  navigate('/', { state: { scrollTo: targetId, switchTab: switchToTab } });
+                } else {
+                  // Dispatch custom event to switch tab if needed
+                  if (switchToTab) {
+                    window.dispatchEvent(new CustomEvent('switchTab', { detail: switchToTab }));
+                  }
                   setTimeout(() => {
                     const targetSection = document.getElementById(targetId);
                     if (targetSection) {
                       targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                   }, 100);
-                } else {
-                  const targetSection = document.getElementById(targetId);
-                  if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
                 }
               }
             };
@@ -174,27 +183,36 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
             }
 
             let targetId = "";
+            let switchToTab: string | null = null;
+
             if (linkText === "אודות") targetId = "about";
             if (linkText === "מי זו לינה?") targetId = "who-is-lina";
-            if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") targetId = "faq";
+            if (linkText === "FAQ מתארחים") {
+              targetId = "faq";
+              switchToTab = "מתארחים";
+            }
+            if (linkText === "FAQ מארחים") {
+              targetId = "faq";
+              switchToTab = "מארחים";
+            }
             if (linkText === "צור קשר") targetId = "contact";
 
             if (targetId) {
               e.preventDefault();
 
               if (!isHomePage) {
-                navigate('/');
+                navigate('/', { state: { scrollTo: targetId, switchTab: switchToTab } });
+              } else {
+                // Dispatch custom event to switch tab if needed
+                if (switchToTab) {
+                  window.dispatchEvent(new CustomEvent('switchTab', { detail: switchToTab }));
+                }
                 setTimeout(() => {
                   const targetSection = document.getElementById(targetId);
                   if (targetSection) {
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }, 100);
-              } else {
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                  targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
               }
             }
           };
