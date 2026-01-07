@@ -138,44 +138,46 @@ export const HomePageHosts = (): JSX.Element => {
         )}
       </section>
 
-      <section className="relative w-full flex flex-col items-center py-8 md:py-16 px-4">
-        <div className="w-full max-w-[836px] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] leading-[1.16] text-center tracking-[0] [direction:rtl] animate-fade-in-up">
-          {content.packages.title}
-        </div>
-
-        <div className="relative w-full max-w-[445px] h-auto aspect-[445/325] mt-8 md:mt-16">
-          <img
-            className="absolute top-0 left-[15%] w-[76.6%] h-auto"
-            alt="Frame"
-            src={content.packages.mainImage}
-          />
-
-          <img
-            className="absolute w-[32.92%] h-auto top-[6.42%] left-[66.63%]"
-            alt="Objects"
-            src={content.packages.decorativeImage1}
-          />
-
-          <img
-            className="absolute top-[26.5%] left-[7%] w-[58.7%] h-auto"
-            alt="Objects"
-            src={content.packages.decorativeImage2}
-          />
-
-          <div className="absolute top-[32.6%] left-0 w-[80.7%] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[14px] md:text-lg text-center tracking-[0] leading-[1.16] [direction:rtl]">
-            {content.packages.monthLabel}
+      {!content.packages.hidden && (
+        <section className="relative w-full flex flex-col items-center py-8 md:py-16 px-4">
+          <div className="w-full max-w-[836px] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] leading-[1.16] text-center tracking-[0] [direction:rtl] animate-fade-in-up">
+            {content.packages.title}
           </div>
-        </div>
 
-        <Button
-          onClick={() => navigate('/packages')}
-          className="flex items-center justify-center gap-2.5 px-6 py-3 mt-8 bg-[#7f6cff] rounded-[50px] hover:bg-[#6b5ce6] min-h-[48px]"
-        >
-          <div className="relative w-fit font-normal text-[18px] md:text-[21px] text-left [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
-            {content.packages.buttonText}
+          <div className="relative w-full max-w-[445px] h-auto aspect-[445/325] mt-8 md:mt-16">
+            <img
+              className="absolute top-0 left-[15%] w-[76.6%] h-auto"
+              alt="Frame"
+              src={content.packages.mainImage}
+            />
+
+            <img
+              className="absolute w-[32.92%] h-auto top-[6.42%] left-[66.63%]"
+              alt="Objects"
+              src={content.packages.decorativeImage1}
+            />
+
+            <img
+              className="absolute top-[26.5%] left-[7%] w-[58.7%] h-auto"
+              alt="Objects"
+              src={content.packages.decorativeImage2}
+            />
+
+            <div className="absolute top-[32.6%] left-0 w-[80.7%] [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[14px] md:text-lg text-center tracking-[0] leading-[1.16] [direction:rtl]">
+              {content.packages.monthLabel}
+            </div>
           </div>
-        </Button>
-      </section>
+
+          <Button
+            onClick={() => navigate('/packages')}
+            className="flex items-center justify-center gap-2.5 px-6 py-3 mt-8 bg-[#7f6cff] rounded-[50px] hover:bg-[#6b5ce6] min-h-[48px]"
+          >
+            <div className="relative w-fit font-normal text-[18px] md:text-[21px] text-left [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
+              {content.packages.buttonText}
+            </div>
+          </Button>
+        </section>
+      )}
 
       <section id="faq" className="relative w-full flex flex-col items-center py-8 md:py-16 px-4">
         <div className="w-full max-w-[940px] bg-[#7f6cff] rounded-[10px] shadow-[0px_6px_11px_#00000040] py-6 px-6 md:px-8 flex items-center justify-center animate-scale-in">
@@ -212,7 +214,7 @@ export const HomePageHosts = (): JSX.Element => {
             ))}
           </Accordion>
 
-          {content.faq.items[1]?.answer && (
+          {!content.packages.hidden && content.faq.items[1]?.answer && (
             <div className="flex justify-center mt-6">
               <Button
                 onClick={() => navigate('/packages')}

@@ -19,6 +19,7 @@ export interface Content {
     image: string;
   };
   packages: {
+    hidden?: boolean;
     title: string;
     buttonText: string;
     mainImage: string;
