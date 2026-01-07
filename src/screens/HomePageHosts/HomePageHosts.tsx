@@ -131,9 +131,11 @@ export const HomePageHosts = (): JSX.Element => {
           {content.about.description}
         </div>
 
-        <div className="relative w-full max-w-[307px] h-auto mt-8 md:mt-16">
-          <img className="w-full h-auto" alt="Frame" src={content.about.image} />
-        </div>
+        {content.about.image && (
+          <div className="relative w-full max-w-[307px] h-auto mt-8 md:mt-16">
+            <img className="w-full h-auto" alt="Frame" src={content.about.image} />
+          </div>
+        )}
       </section>
 
       <section className="relative w-full flex flex-col items-center py-8 md:py-16 px-4">
