@@ -195,7 +195,7 @@ export const HomePageHosts = (): JSX.Element => {
                     </AccordionTrigger>
                     {item.answer && (
                       <AccordionContent className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-[18px] md:text-[21px] tracking-[0] leading-[normal] [direction:rtl] pt-4">
-                        {item.answer}
+                        <span dangerouslySetInnerHTML={{ __html: item.answer }} />
                         {index === 1 && !content.packages.hidden && (
                           <div className="flex justify-center mt-6">
                             <Button
