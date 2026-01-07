@@ -61,52 +61,26 @@ export const TermsPage = (): JSX.Element => {
   return (
     <div className="bg-white overflow-hidden w-full relative">
       {/* Simple header without background image */}
-      <header className="relative w-full bg-white">
-        {/* Top bar with logo and navigation */}
-        <div className="flex items-center justify-between px-4 md:px-[158px] py-4 md:py-6">
-          {/* Logo */}
-          <div
-            className="w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
-            onClick={() => navigate('/')}
-            role="button"
-            aria-label="Go to home page"
-          />
+      <header className="relative w-full bg-white pt-4 pb-8">
+        {/* Logo */}
+        <div
+          className="absolute top-4 left-4 md:top-7 md:left-[158px] w-[90px] h-[24px] md:w-[126px] md:h-[33px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+          onClick={() => navigate('/')}
+          role="button"
+          aria-label="Go to home page"
+        />
 
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center gap-4 [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-base tracking-[0] leading-[17.1px] [direction:rtl]">
-            {navigationLinks.map((link, index) => (
-              <a
-                key={index}
-                href="#"
-                className="hover:underline cursor-pointer hover:text-[#7f6cff]"
-                onClick={(e) => handleNavClick(e, link)}
-              >
-                {link}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile hamburger menu button */}
-          <button
-            className="md:hidden w-[24px] h-[24px] flex flex-col justify-center items-center gap-[4px]"
-            onClick={() => setIsMenuOpen(true)}
-            aria-label="Toggle menu"
-          >
-            <span className="w-6 h-[2.5px] bg-[#17C3B2] rounded-full"></span>
-            <span className="w-6 h-[2.5px] bg-[#17C3B2] rounded-full"></span>
-            <span className="w-6 h-[2.5px] bg-[#17C3B2] rounded-full"></span>
-          </button>
-        </div>
-
-        {/* Sticky mobile header on scroll */}
-        {isScrolled && (
-          <div className="md:hidden fixed top-0 left-0 right-0 bg-white z-[60] h-[64px] flex items-center justify-between px-4 shadow-sm">
-            <div
-              className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
-              onClick={() => navigate('/')}
-              role="button"
-              aria-label="Go to home page"
-            />
+        {/* Mobile hamburger menu button */}
+        {!isMenuOpen && (
+          <div className={`md:hidden ${isScrolled ? 'fixed top-0 left-0 right-0 bg-white z-[60] h-[64px] flex items-center justify-between px-4' : 'absolute top-4 right-4 z-50'} transition-all duration-300`}>
+            {isScrolled && (
+              <div
+                className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+                onClick={() => navigate('/')}
+                role="button"
+                aria-label="Go to home page"
+              />
+            )}
             <button
               className="w-[24px] h-[24px] flex flex-col justify-center items-center gap-[4px]"
               onClick={() => setIsMenuOpen(true)}
@@ -148,8 +122,24 @@ export const TermsPage = (): JSX.Element => {
           </div>
         )}
 
+        {/* Desktop navigation */}
+        <nav className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-[819px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-base tracking-[0] leading-[17.1px] [direction:rtl]">
+          {navigationLinks.map((link, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && "\u00A0\u00A0\u00A0\u00A0"}
+              <a
+                href="#"
+                className="hover:underline cursor-pointer hover:text-[#7f6cff]"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                {link}
+              </a>
+            </React.Fragment>
+          ))}
+        </nav>
+
         {/* Purple title */}
-        <h1 className="mt-8 md:mt-12 pb-8 px-4 [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] text-center tracking-[0] leading-[1.2] [direction:rtl]">
+        <h1 className="mt-16 md:mt-20 px-4 [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] text-center tracking-[0] leading-[1.2] [direction:rtl]">
           תקנון ותנאי שימוש – לינה בוט
         </h1>
       </header>
