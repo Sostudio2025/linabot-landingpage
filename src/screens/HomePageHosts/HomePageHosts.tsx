@@ -172,7 +172,7 @@ export const HomePageHosts = (): JSX.Element => {
 
           {content.packages.decorativeImage1 && (
             <img
-              className="w-full max-w-[300px] h-auto mt-8"
+              className="w-full max-w-[397px] h-auto mt-8"
               alt="Calendar"
               src={content.packages.decorativeImage1}
             />
