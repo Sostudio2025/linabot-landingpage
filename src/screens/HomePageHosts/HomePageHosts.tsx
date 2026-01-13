@@ -142,10 +142,12 @@ export const HomePageHosts = (): JSX.Element => {
           {content.about.description}
         </div>
 
-        {content.packages.hidden && content.about.image && (
-          <div className="relative w-full max-w-[307px] h-auto mt-8 md:mt-16">
-            <img className="w-full h-auto" alt="Frame" src={content.about.image} />
-          </div>
+        {content.packages.hidden && (
+          <img
+            className="w-full max-w-[397px] h-auto mt-8 md:mt-16"
+            alt="Calendar"
+            src="/calendar-hosts.svg"
+          />
         )}
       </section>
 
