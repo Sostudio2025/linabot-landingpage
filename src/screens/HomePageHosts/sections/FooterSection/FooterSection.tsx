@@ -176,7 +176,7 @@ export const FooterSection = (): JSX.Element => {
                         htmlFor="hosting"
                         className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-base md:text-lg tracking-[0] leading-[27px] cursor-pointer"
                       >
-                        אירוח
+                        מתארח
                       </Label>
                       <RadioGroupItem
                         value="hosting"
