@@ -223,3 +223,14 @@
     }
   }
 }
+
+/* Scroll offset for anchor links to account for sticky tabs */
+#about, #who-is-lina, #faq, #contact {
+  scroll-margin-top: 180px;
+}
+
+@media (max-width: 768px) {
+  #about, #who-is-lina, #faq, #contact {
+    scroll-margin-top: 200px;
+  }
+}
