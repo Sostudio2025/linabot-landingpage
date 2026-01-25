@@ -167,9 +167,9 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
 
       {/* Sticky header for desktop */}
       {isScrolled && (
-        <div className="hidden md:flex fixed top-0 left-0 right-0 bg-white z-[60] h-[64px] items-center justify-between px-8 shadow-sm transition-all duration-300">
+        <div className="hidden md:flex fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-md z-[60] h-[64px] items-center justify-center px-8 shadow-sm transition-all duration-300">
           <div
-            className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+            className="absolute left-8 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
             onClick={() => navigate('/')}
             role="button"
             aria-label="Go to home page"
