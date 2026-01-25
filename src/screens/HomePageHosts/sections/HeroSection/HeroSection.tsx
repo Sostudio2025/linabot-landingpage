@@ -165,6 +165,83 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
         </div>
       )}
 
+      {/* Sticky header for desktop */}
+      {isScrolled && (
+        <div className="hidden md:flex fixed top-0 left-0 right-0 bg-white z-[60] h-[64px] items-center justify-between px-8 shadow-sm transition-all duration-300">
+          <div
+            className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+            onClick={() => navigate('/')}
+            role="button"
+            aria-label="Go to home page"
+          />
+          <nav className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[0] leading-[17.1px] [direction:rtl]">
+            {navigationLinks.map((link, index) => {
+              const getLinkHref = (linkText: string) => {
+                if (linkText === "אודות") return "#about";
+                if (linkText === "מי זו לינה?") return "#who-is-lina";
+                if (linkText === "FAQ מתארחים" || linkText === "FAQ מארחים") return "#faq";
+                if (linkText === "צור קשר") return "#contact";
+                return "#";
+              };
+
+              const handleClick = (e: React.MouseEvent, linkText: string) => {
+                if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
+                  e.preventDefault();
+                  navigate('/terms');
+                  return;
+                }
+
+                let targetId = "";
+                let switchToTab: string | null = null;
+
+                if (linkText === "אודות") targetId = "about";
+                if (linkText === "מי זו לינה?") targetId = "who-is-lina";
+                if (linkText === "FAQ מתארחים") {
+                  targetId = "faq";
+                  switchToTab = "מתארחים";
+                }
+                if (linkText === "FAQ מארחים") {
+                  targetId = "faq";
+                  switchToTab = "מארחים";
+                }
+                if (linkText === "צור קשר") targetId = "contact";
+
+                if (targetId) {
+                  e.preventDefault();
+
+                  if (!isHomePage) {
+                    navigate('/', { state: { scrollTo: targetId, switchTab: switchToTab } });
+                  } else {
+                    if (switchToTab) {
+                      window.dispatchEvent(new CustomEvent('switchTab', { detail: switchToTab }));
+                    }
+                    setTimeout(() => {
+                      const targetSection = document.getElementById(targetId);
+                      if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }, 100);
+                  }
+                }
+              };
+
+              return (
+                <React.Fragment key={index}>
+                  {index > 0 && "\u00A0\u00A0\u00A0\u00A0"}
+                  <a
+                    href={getLinkHref(link)}
+                    className="hover:underline cursor-pointer hover:text-[#7f6cff]"
+                    onClick={(e) => handleClick(e, link)}
+                  >
+                    {link}
+                  </a>
+                </React.Fragment>
+              );
+            })}
+          </nav>
+        </div>
+      )}
+
       <nav className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-[819px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-white text-base tracking-[0] leading-[17.1px] [direction:rtl]">
         {navigationLinks.map((link, index) => {
           const getLinkHref = (linkText: string) => {

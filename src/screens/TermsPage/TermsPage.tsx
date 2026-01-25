@@ -131,6 +131,32 @@ export const TermsPage = (): JSX.Element => {
           </div>
         )}
 
+        {/* Sticky header for desktop */}
+        {isScrolled && (
+          <div className="hidden md:flex fixed top-0 left-0 right-0 bg-white z-[60] h-[64px] items-center justify-between px-8 shadow-sm transition-all duration-300">
+            <div
+              className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
+              onClick={() => navigate('/')}
+              role="button"
+              aria-label="Go to home page"
+            />
+            <nav className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-sm tracking-[0] leading-[17.1px] [direction:rtl]">
+              {navigationLinks.map((link, index) => (
+                <React.Fragment key={index}>
+                  {index > 0 && "\u00A0\u00A0\u00A0\u00A0"}
+                  <a
+                    href="#"
+                    className="hover:underline cursor-pointer hover:text-[#7f6cff]"
+                    onClick={(e) => handleNavClick(e, link)}
+                  >
+                    {link}
+                  </a>
+                </React.Fragment>
+              ))}
+            </nav>
+          </div>
+        )}
+
         {/* Desktop navigation */}
         <nav className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-[819px] [font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-base tracking-[0] leading-[17.1px] [direction:rtl]">
           {navigationLinks.map((link, index) => (
