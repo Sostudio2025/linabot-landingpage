@@ -20,6 +20,7 @@ export const HomePageHosts = (): JSX.Element => {
   const [activeType, setActiveType] = useState<ContentType>("מארחים");
   const { content, loading } = useContent(activeType);
   const pendingScrollRef = useRef<string | null>(null);
+  const hidePackages = import.meta.env.VITE_HIDE_PACKAGES === 'true';
 
   const handleCardChange = (cardId: string) => {
     setActiveType(cardId as ContentType);
@@ -163,14 +164,16 @@ export const HomePageHosts = (): JSX.Element => {
             </div>
           )}
 
-          <Button
-            onClick={() => navigate('/packages')}
-            className="flex items-center justify-center gap-2.5 px-6 py-3 mt-8 bg-[#7f6cff] rounded-[50px] hover:bg-[#6b5ce6] min-h-[48px]"
-          >
-            <div className="relative w-fit font-normal text-[18px] md:text-[21px] text-left [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
-              {content.packages.buttonText}
-            </div>
-          </Button>
+          {!hidePackages && (
+            <Button
+              onClick={() => navigate('/packages')}
+              className="flex items-center justify-center gap-2.5 px-6 py-3 mt-8 bg-[#7f6cff] rounded-[50px] hover:bg-[#6b5ce6] min-h-[48px]"
+            >
+              <div className="relative w-fit font-normal text-[18px] md:text-[21px] text-left [font-family:'IBM_Plex_Sans',Helvetica] text-white tracking-[0] leading-[normal] [direction:rtl]">
+                {content.packages.buttonText}
+              </div>
+            </Button>
+          )}
 
           {content.packages.decorativeImage1 && (
             <img
@@ -206,7 +209,7 @@ export const HomePageHosts = (): JSX.Element => {
                     {item.answer && (
                       <AccordionContent className="[font-family:'IBM_Plex_Sans',Helvetica] font-normal text-[#585858] text-[18px] md:text-[21px] tracking-[0] leading-[normal] [direction:rtl] pt-4">
                         <span dangerouslySetInnerHTML={{ __html: item.answer }} />
-                        {index === 1 && !content.packages.hidden && (
+                        {index === 1 && !content.packages.hidden && !hidePackages && (
                           <div className="flex justify-center mt-6">
                             <Button
                               onClick={() => navigate('/packages')}
