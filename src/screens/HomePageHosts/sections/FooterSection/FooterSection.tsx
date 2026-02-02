@@ -263,8 +263,13 @@ export const FooterSection = (): JSX.Element => {
                 const handleClick = (e: React.MouseEvent, linkText: string) => {
                   e.preventDefault();
 
-                  if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
+                  if (linkText === "תקנון ותנאי שימוש") {
                     navigate('/terms');
+                    window.scrollTo(0, 0);
+                    return;
+                  }
+                  if (linkText === "מדיניות הפרטיות") {
+                    navigate('/privacy');
                     window.scrollTo(0, 0);
                     return;
                   }

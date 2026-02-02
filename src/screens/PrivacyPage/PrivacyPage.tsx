@@ -12,7 +12,7 @@ const navigationLinks = [
   "מדיניות הפרטיות",
 ];
 
-export const TermsPage = (): JSX.Element => {
+export const PrivacyPage = (): JSX.Element => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,17 +39,17 @@ export const TermsPage = (): JSX.Element => {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent, linkText: string) => {
-    if (linkText === "תקנון ותנאי שימוש") {
+    if (linkText === "מדיניות הפרטיות") {
       e.preventDefault();
       setIsMenuOpen(false);
       window.scrollTo(0, 0);
       return;
     }
 
-    if (linkText === "מדיניות הפרטיות") {
+    if (linkText === "תקנון ותנאי שימוש") {
       e.preventDefault();
       setIsMenuOpen(false);
-      navigate('/privacy');
+      navigate('/terms');
       return;
     }
 
@@ -183,7 +183,7 @@ export const TermsPage = (): JSX.Element => {
 
         {/* Purple title */}
         <h1 className="mt-16 md:mt-20 px-4 [font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[36px] md:text-[56px] text-center tracking-[0] leading-[1.2] [direction:rtl]">
-          תקנון ותנאי שימוש – לינה בוט
+          מדיניות פרטיות - לינה בוט
         </h1>
       </header>
 
@@ -194,182 +194,112 @@ export const TermsPage = (): JSX.Element => {
               עודכן לאחרונה: אוגוסט 2025
             </p>
             <p className="text-right mb-8">
-              ברוכים הבאים ללינה בוט ("השירות").
-              <br />
-              השירות מופעל על ידי אפטודייט טכנולוגיה ("החברה").
-              <br />
-              השימוש בשירות מהווה הסכמה מלאה לתנאי התקנון ותנאי השימוש שלהלן. אם אינך מסכים/ה להם - אנא הימנע/י משימוש בשירות.
+              השירות מופעל על ידי: אפטודייט טכנולוגיה
+              <br /><br />
+              לינה בוט מחויבת לשמירה על פרטיות המשתמשים והמארחים. מדיניות זו מפרטת את סוגי המידע שאנו אוספים, מטרת השימוש בו, האופן בו אנו שומרים עליו וזכויותיכם.
             </p>
 
             <div>
               <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                1. אופי השירות
+                1. איסוף מידע
               </h2>
               <div className="space-y-4 mr-4">
                 <p>
-                  <strong>1.1</strong> לינה בוט הוא שירות מבוסס WhatsApp המאפשר חיבור בין משתמשים (מבקשי אירוח) לבין בעלי מקומות אירוח (המארחים).
+                  <strong>1.1</strong> משתמשים (מבקשי אירוח): שם, טלפון, פרטי הפנייה, תאריכי האירוח, מספר אנשים, העדפות אירוח.
                 </p>
                 <p>
-                  <strong>1.2</strong> לינה בוט הוא השירות מהווה פלטפורמת חיבור בלבד. החברה אינה צד להתקשרות בין המשתמש לבין המארח, ואינה אחראית על טיב האירוח, איכות השירות, עמידה בהתחייבויות, תשלום או כל עניין אחר הנוגע להתקשרות בין הצדדים.
-                </p>
-                <p>
-                  <strong>1.3</strong> החברה רשאית לשנות, להפסיק או לעדכן את השירות מעת לעת, ללא הודעה מוקדמת.
+                  <strong>1.2</strong> מארחים (בעלי מקומות אירוח): שם איש קשר, מספר טלפון, מייל, פרטי מקום האירוח.
                 </p>
               </div>
             </div>
 
             <div>
               <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                2. הגדרות
+                2. שימוש במידע
               </h2>
               <div className="space-y-4 mr-4">
                 <p>
-                  <strong>2.1</strong> "משתמש" – אדם הפונה ללינה בוט במטרה למצוא מקום אירוח.
+                  <strong>2.1</strong> מתן השירות - חיבור בין משתמשים למארחים.
                 </p>
                 <p>
-                  <strong>2.2</strong> "מארח" – בעל מקום אירוח, צימר, דירה, וילה, בית מלון וכל נכס הרשום בשירות ומקבל פניות ממשתמשים.
+                  <strong>2.2</strong> ניהול פניות ושיפור חוויית השימוש.
                 </p>
                 <p>
-                  <strong>2.3</strong> "החברה" – אפטודייט טכנולוגיה, המפעילה את לינה בוט.
+                  <strong>2.3</strong> שליחת התראות או הודעות הנוגעות לשירות (למשתמשים שהסכימו לקבלן).
                 </p>
               </div>
             </div>
 
             <div>
               <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                3. גיל המשתמשים
+                3. שיתוף מידע
               </h2>
               <div className="space-y-4 mr-4">
                 <p>
-                  <strong>3.1</strong> השימוש בשירות מיועד למבוגרים (גיל 18 ומעלה). אם נודע לנו שנאסף מידע על קטין ללא הסכמת ההורה, נפעל למחוק אותו.
+                  <strong>3.1</strong> המידע עשוי להיות מועבר בין משתמשים למארחים לצורך יצירת קשר.
+                </p>
+                <p>
+                  <strong>3.2</strong> המידע עשוי להימסר לצדדים שלישיים המספקים לנו שירותים שונים (כגון ספקי אחסון, תשלום ועיבוד נתונים), וזאת אך ורק לצורך אספקת השירותים המבוקשים ועיבוד המידע הנדרש. צדדים שלישיים אלו מחויבים לשמור על סודיות המידע ולעשות בו שימוש רק לצרכים שלשמם נמסר להם, בהתאם להוראות הדין ולמדיניות הפרטיות שלנו.
+                </p>
+                <p>
+                  <strong>3.3</strong> מידע עשוי להיות מאוחסן או מעובד בשרתי ענן מחוץ לישראל, תוך שמירה על רמת הגנה נדרשת לפי דין.
                 </p>
               </div>
             </div>
 
             <div>
               <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                4. תנאי שימוש
+                4. אבטחת מידע
               </h2>
               <div className="space-y-4 mr-4">
                 <p>
-                  <strong>4.1</strong> המשתמש מצהיר כי הפרטים שנמסרו נכונים, מלאים ומעודכנים.
+                  <strong>4.1</strong> החברה נוקטת באמצעי אבטחה סבירים: הצפנה, גיבוי והגנה מפני גישה לא מורשית.
                 </p>
                 <p>
-                  <strong>4.2</strong> המשתמש מתחייב שלא להשתמש בשירות למטרות בלתי חוקיות, פוגעניות או כל פעילות בלתי חוקית אחרת.
-                </p>
-                <p>
-                  <strong>4.3</strong> המארח מתחייב למסור מידע נכון ומלא על מקום האירוח.
-                </p>
-                <p>
-                  <strong>4.4</strong> החברה רשאית לחסום או להסיר משתמש/מארח שפועל בניגוד לתנאי שימוש אלו.
+                  <strong>4.2</strong> אין אנו יכולים להבטיח הגנה מוחלטת מפני חדירה או שימוש בלתי מורשה.
                 </p>
               </div>
             </div>
 
             <div>
               <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                5. מנוי ושירות בתשלום
+                5. שמירת מידע
               </h2>
               <div className="space-y-4 mr-4">
                 <p>
-                  <strong>5.1</strong> חלק מהשירות עשוי להינתן במתכונת מנוי חודשי מתחדש אוטומטית עבור המארחים בלבד.
+                  <strong>5.1</strong> המידע נשמר כל עוד נדרש למתן השירות ולמטרות המפורטות המדיניות זו, אלא אם המשתמש מבקש למחוק אותו.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
+                6. זכויות המשתמשים ומארחים
+              </h2>
+              <div className="space-y-4 mr-4">
+                <p>
+                  <strong>6.1</strong> בהתאם לחוק הגנת הפרטיות, כל משתמש ומארח רשאי לעיין במידע שנשמר עליו, לבקש את תיקונו או את מחיקתו.
                 </p>
                 <p>
-                  <strong>5.2</strong> המנוי יחויב פעם בחודש באמצעות מערכת סליקה מאובטחת.
-                </p>
-                <p>
-                  <strong>5.3</strong> ניתן לבטל את המנוי בכל עת; החיוב ייפסק מיידית לאחר ביטול.
-                </p>
-                <p>
-                  <strong>5.4</strong> החברה תשלח אישור חיוב וקבלה על כל תשלום.
-                </p>
-                <p>
-                  <strong>5.5</strong> ניתן לבטל את המנוי באמצעות פנייה לכתובת דוא"ל:{" "}
+                  <strong>6.2</strong> בקשה כאמור ניתן לשלוח לחברה באמצעות כתובת דוא"ל:{" "}
                   <a href="mailto:contact@lina-bot.com" className="text-[#7f6cff] hover:underline">
                     contact@lina-bot.com
-                  </a>
+                  </a>{" "}
+                  או באמצעי תקשורת אחרים שיפורסמו מעת לעת.
                 </p>
               </div>
             </div>
 
             <div>
               <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                6. קניין רוחני
+                7. שינויים במדיניות פרטיות
               </h2>
               <div className="space-y-4 mr-4">
                 <p>
-                  <strong>6.1</strong> כל הזכויות בשירות, כולל לוגו, טקסט, קוד ותוכן, שמורות לחברה. אין להעתיק, להפיץ או לשנות תוכן ללא אישור מראש ובכתב.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                7. כתב ויתור ואחריות מוגבלת
-              </h2>
-              <div className="space-y-4 mr-4">
-                <p>
-                  <strong>7.1</strong> השירות ניתן כמות שהוא (As-Is). החברה אינה מתחייבת שהשירות יהיה חף מתקלות, הפרעות או שגיאות.
+                  <strong>7.1</strong> החברה רשאית לעדכן את מדיניות הפרטיות מעת לעת.
                 </p>
                 <p>
-                  <strong>7.2</strong> החברה אינה אחראית על נכונות, שלמות או עדכניות המידע שמוסר המשתמש או המארח.
-                </p>
-                <p>
-                  <strong>7.3</strong> החברה לא תישא באחריות לכל נזק ישיר או עקיף שייגרם כתוצאה מהשימוש בשירות או מהתקשרות בין משתמשים לבין מארחים.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                8. שינוי תנאי השימוש
-              </h2>
-              <div className="space-y-4 mr-4">
-                <p>
-                  <strong>8.1</strong> החברה רשאית לשנות מעת לעת את תנאי השימוש והמדיניות ללא פרסום או עדכון.
-                </p>
-                <p>
-                  <strong>8.2</strong> הגרסה המעודכנת תפורסם ותיכנס לתוקף מיד עם פרסומה.
-                </p>
-                <p>
-                  <strong>8.3</strong> במקרה של שינוי מהותי, החברה תשתדל להודיע למשתמשים באמצעות דוא"ל או התראה בתוך השירות.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                9. דין וסמכות שיפוט
-              </h2>
-              <div className="space-y-4 mr-4">
-                <p>
-                  <strong>9.1</strong> על התקנון יחולו דיני מדינת ישראל בלבד.
-                </p>
-                <p>
-                  <strong>9.2</strong> סמכות השיפוט הבלעדית בכל מחלוקת נתונה היא לבית המשפט המוסמך במחוז תל אביב.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="[font-family:'Secular_One',Helvetica] font-normal text-[#7f6cff] text-[24px] md:text-[32px] tracking-[0] leading-[1.2] mb-4 text-right animate-fade-in-up">
-                10. יצירת קשר
-              </h2>
-              <div className="space-y-4 mr-4">
-                <p>
-                  שאלות או בקשות בנוגע לתקנון או למדיניות הפרטיות ניתן ליצור קשר עם החברה באמצעות:
-                </p>
-                <p>
-                  דוא"ל:{" "}
-                  <a
-                    href="mailto:contact@lina-bot.com"
-                    className="text-[#7f6cff] hover:underline"
-                  >
-                    contact@lina-bot.com
-                  </a>
-                </p>
-                <p>
-                  יש לציין בפנייה את שמך המלא ואת פרטי יצירת הקשר שלך.
+                  <strong>7.2</strong> הגרסה המעודכנת תפורסם ותיכנס לתוקף מיד עם פרסומה.
                 </p>
               </div>
             </div>

@@ -108,10 +108,16 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
             };
 
             const handleClick = (e: React.MouseEvent, linkText: string) => {
-              if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
+              if (linkText === "תקנון ותנאי שימוש") {
                 e.preventDefault();
                 setIsMenuOpen(false);
                 navigate('/terms');
+                return;
+              }
+              if (linkText === "מדיניות הפרטיות") {
+                e.preventDefault();
+                setIsMenuOpen(false);
+                navigate('/privacy');
                 return;
               }
 
@@ -185,9 +191,14 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
               };
 
               const handleClick = (e: React.MouseEvent, linkText: string) => {
-                if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
+                if (linkText === "תקנון ותנאי שימוש") {
                   e.preventDefault();
                   navigate('/terms');
+                  return;
+                }
+                if (linkText === "מדיניות הפרטיות") {
+                  e.preventDefault();
+                  navigate('/privacy');
                   return;
                 }
 
@@ -253,9 +264,14 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
           };
 
           const handleClick = (e: React.MouseEvent, linkText: string) => {
-            if (linkText === "תקנון ותנאי שימוש" || linkText === "מדיניות הפרטיות") {
+            if (linkText === "תקנון ותנאי שימוש") {
               e.preventDefault();
               navigate('/terms');
+              return;
+            }
+            if (linkText === "מדיניות הפרטיות") {
+              e.preventDefault();
+              navigate('/privacy');
               return;
             }
 
