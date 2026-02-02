@@ -66,7 +66,13 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
           {isScrolled && (
             <div
               className="w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
-              onClick={() => navigate('/')}
+              onClick={() => {
+                if (isHomePage) {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  navigate('/');
+                }
+              }}
               role="button"
               aria-label="Go to home page"
             />
@@ -176,7 +182,13 @@ export const HeroSection = ({ heroTitle, backgroundImage }: HeroSectionProps): J
         <div className="hidden md:flex fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-md z-[60] h-[64px] items-center justify-center px-8 shadow-sm transition-all duration-300">
           <div
             className="absolute left-8 w-[90px] h-[24px] bg-[url(/---------copy--1--1.png)] bg-cover bg-[50%_50%] cursor-pointer"
-            onClick={() => navigate('/')}
+            onClick={() => {
+              if (isHomePage) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                navigate('/');
+              }
+            }}
             role="button"
             aria-label="Go to home page"
           />

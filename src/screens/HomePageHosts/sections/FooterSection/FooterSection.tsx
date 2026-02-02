@@ -243,7 +243,13 @@ export const FooterSection = (): JSX.Element => {
             className="absolute top-[60px] md:top-[91px] left-1/2 -translate-x-1/2 w-[100px] h-[26px] md:w-[126px] md:h-[33px] object-cover cursor-pointer"
             alt="LinaBot - Go to home page"
             src="/---------copy--1--1.png"
-            onClick={() => navigate('/')}
+            onClick={() => {
+              if (location.pathname === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                navigate('/');
+              }
+            }}
             role="button"
           />
 
