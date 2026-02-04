@@ -195,6 +195,7 @@ export const FooterSection = (): JSX.Element => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
+                  maxLength={200}
                   className="absolute top-[319px] left-6 right-6 md:left-px md:right-auto w-[calc(100%-48px)] md:w-[666px] h-[150px] bg-white rounded-lg border-0 text-right [font-family:'IBM_Plex_Sans',Helvetica] text-lg text-[#999999] resize-none"
                   placeholder="אני פונה בקשר ל..."
                   dir="rtl"
